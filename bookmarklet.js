@@ -20,7 +20,7 @@ var BaselineGridViewer = (function () {
     BaselineGridViewer.prototype.append = function () {
         var controllerHMTL = "<div id='" + this.ids.controller + "'><label>Interval: <input name='bsg-interval' type='number' min='0' max='24' value='" + this.interval + "' /></label></div>", viewerHTML = "<div id='" + this.ids.viewer + "'></div>", html = document.body.innerHTML;
         document.body.innerHTML = controllerHMTL + html + viewerHTML;
-        var stylesheet = "<style id='" + this.ids.style + "'>#" + this.ids.viewer + "{position:absolute;top:28px;left:0;width:100%;height:" + document.body.clientHeight + "px;}#" + this.ids.viewer + ":after{display:block;content:'';position:absolute;top:0;left:0;z-index:9999;width:100%;height:100%;}</style>";
+        var stylesheet = "<style id='" + this.ids.style + "'>#" + this.ids.viewer + "{position:absolute;top:37px;left:0;width:100%;height:" + document.body.clientHeight + "px;background-repeat:repeat;}</style>";
         document.head.innerHTML += stylesheet;
         this.addGradient(document.getElementById(this.ids.viewer));
     };
@@ -32,10 +32,10 @@ var BaselineGridViewer = (function () {
         }
     };
     BaselineGridViewer.prototype.addGradient = function (el) {
-        var interval = document.getElementById(this.ids.controller).getElementsByTagName("input")[0].value, prefixes = " -webkit- -moz-", gradient = "linear-gradient(to bottom, transparent " + (interval - 1) + "px, rgba(0,0,0,0.5) " + interval + "px);", test = prefixes.split(" ").join(gradient);
-        console.log(test);
-        el.style.backgroundImage = gradient;
-        console.log(el);
+        var interval = parseInt(document.getElementById(this.ids.controller).getElementsByTagName("input")[0].value), bgImage = "linear-gradient(to bottom, transparent " + (interval - 1) + "px, rgba(0,0,0,0.5) " + interval + "px);", bgSize = "100% " + interval + "px";
+        var string = "<style>#" + el.id + "{background-image:" + bgImage + ";background-size:" + bgSize + "}</style>";
+        console.log(string);
+        document.head.innerHTML += string;
     };
     return BaselineGridViewer;
 })();
