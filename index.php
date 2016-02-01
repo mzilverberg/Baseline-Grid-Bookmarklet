@@ -11,18 +11,12 @@
     margin: 0;
     padding: 0;
   }
-  iframe {
-    border: 0 none;
-    width: 100vw;
-    height: 100vh;
-  }
   </style>
 </head>
 
 <body>
 
-  <?php /* <a href="javascript:<?php echo file_get_contents("bookmarklet.js"); ?>">Test</a> */ ?>
-  <a href="javascript:(function(){if(window.baselineGridViewer!==undefined){var baseline=new BaselineGridViewer();}else{document.body.appendChild(document.createElement('script')).src='bookmarklet.js';}})();">Test append script</a>
+  <a href="javascript:(function(){if(window.baselineGridViewer!==undefined){var baseline=new BaselineGridViewer();}else{document.body.appendChild(document.createElement('script')).src='http://localhost:8888/GitHub/Baseline-Grid-Bookmarklet/bookmarklet.js';}})();">Test append script</a>
   <h1>Cras justo odio</h1>
   <?php for($i = 0; $i < 10; $i++) { ?>
     <h2>Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</h2>
