@@ -5,7 +5,10 @@ window.baselineGridViewer = window.baselineGridViewer || {};
 // BaselineGridViewer Class
 class BaselineGridViewer {
 
-  color: string = "rgba(255,0,0,.5)";
+  colors = {
+    gap:         "rgba(255,0,0,0)",
+    ruler:       "rgba(255,0,0,0.5)"
+  };
   ids = {
     controller: "baseline-grid-controller",
     viewer:     "baseline-grid-viewer",
@@ -13,9 +16,9 @@ class BaselineGridViewer {
   };
   interval: number = 12;
 
-  constructor(color = "rgba(255,0,0,.5)") {
+  constructor(colors = { gap: "rgba(255,0,0,0)", ruler: "rgba(255,0,0,0.5)" }) {
     // Set color
-    this.color = color;
+    this.colors = colors;
     // View baseline grid controller and viewer
     this.toggleBaselineGridViewer();
     // Attach handlers
@@ -53,11 +56,11 @@ class BaselineGridViewer {
     var el = document.getElementById(this.ids.viewer),
     // Get baseline grid from input value
         interval = parseInt(document.getElementById(this.ids.controller).getElementsByTagName("input")[0].value),
-        baselineGrid = `repeating-linear-gradient(180deg, transparent, transparent ${interval - 1}px, ${this.color} ${interval}px)`;
-    // Apply background gradient
+        baselineGrid = `repeating-linear-gradient(180deg, ${this.colors.gap}, ${this.colors.gap} ${interval - 1}px, ${this.colors.ruler} ${interval}px)`;
+    // Apply background gradient and background size (for Firefox and Safari)
     el.style.backgroundImage = baselineGrid;
+    el.style.backgroundSize = `100% ${interval}px`;
     /* TODO:
-    - Firefox and Safari gradient rendering
     - Internet Explorer tests
     */
   }

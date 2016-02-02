@@ -1,8 +1,11 @@
 window.baselineGridViewer = window.baselineGridViewer || {};
 var BaselineGridViewer = (function () {
-    function BaselineGridViewer(color) {
-        if (color === void 0) { color = "rgba(255,0,0,.5)"; }
-        this.color = "rgba(255,0,0,.5)";
+    function BaselineGridViewer(colors) {
+        if (colors === void 0) { colors = { gap: "rgba(255,0,0,0)", ruler: "rgba(255,0,0,0.5)" }; }
+        this.colors = {
+            gap: "rgba(255,0,0,0)",
+            ruler: "rgba(255,0,0,0.5)"
+        };
         this.ids = {
             controller: "baseline-grid-controller",
             viewer: "baseline-grid-viewer",
@@ -26,7 +29,7 @@ var BaselineGridViewer = (function () {
                 this.remove();
             }
         };
-        this.color = color;
+        this.colors = colors;
         this.toggleBaselineGridViewer();
         this.attachHandlers();
     }
@@ -46,8 +49,9 @@ var BaselineGridViewer = (function () {
         }
     };
     BaselineGridViewer.prototype.addGradient = function () {
-        var el = document.getElementById(this.ids.viewer), interval = parseInt(document.getElementById(this.ids.controller).getElementsByTagName("input")[0].value), baselineGrid = "repeating-linear-gradient(180deg, transparent, transparent " + (interval - 1) + "px, " + this.color + " " + interval + "px)";
+        var el = document.getElementById(this.ids.viewer), interval = parseInt(document.getElementById(this.ids.controller).getElementsByTagName("input")[0].value), baselineGrid = "repeating-linear-gradient(180deg, " + this.colors.gap + ", " + this.colors.gap + " " + (interval - 1) + "px, " + this.colors.ruler + " " + interval + "px)";
         el.style.backgroundImage = baselineGrid;
+        el.style.backgroundSize = "100% " + interval + "px";
     };
     return BaselineGridViewer;
 })();
