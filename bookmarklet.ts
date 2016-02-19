@@ -34,7 +34,7 @@ class BaselineGridViewer {
     document.body.innerHTML = controllerHMTL + html + viewerHTML;
     // Setup HTML for stylesheet
     var height = 46,
-        stylesheet = "<style id='" + this.ids.style + "'>#" + this.ids.controller + ",#" + this.ids.viewer + "{z-index:999999}#" + this.ids.controller + "{position:relative;box-sizing:border-box;background:#eee;padding:10px;font:15px/1.6 Arial,sans-serif;height:" + height + "px;}#" + this.ids.controller + " label{display:inline;font-size:inherit}#" + this.ids.controller + " input{box-shadow:none}#" + this.ids.controller + " a{float:right;}#" + this.ids.controller + " span{color:#999;font-size:80%}#" + this.ids.viewer + "{position:absolute;top:" + height + "px;left:0;width:100%;height:" + document.body.clientHeight + "px;}</style>";
+        stylesheet = "<style id='" + this.ids.style + "'>#" + this.ids.controller + ",#" + this.ids.viewer + "{z-index:999999;}#" + this.ids.controller + "{position:relative;box-sizing:border-box;background:#eee;padding:10px;font:15px/1.6 Arial,sans-serif;height:" + height + "px;}#" + this.ids.controller + " label{display:inline;font-size:inherit;}#" + this.ids.controller + " input{box-shadow:none;font-size:inherit;}#" + this.ids.controller + " a{float:right;}#" + this.ids.controller + " span{color:#999;font-size:80%;}#" + this.ids.viewer + "{position:absolute;top:" + height + "px;left:0;width:100%;height:" + document.body.clientHeight + "px;}</style>";
     // Append stylesheet to head tag
     document.head.innerHTML += stylesheet;
     // Add gradient overlay

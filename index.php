@@ -16,7 +16,7 @@
 
 <body>
 
-  <a href="javascript:(function(){if(window.baselineGridViewer!==undefined){var baseline=new BaselineGridViewer();}else{document.body.appendChild(document.createElement('script')).src='http://localhost:8888/GitHub/Baseline-Grid-Bookmarklet/bookmarklet.js';}})();">Test append script</a>
+  <a href="javascript:(function(){if(window.baselineGridViewer!==undefined){var baseline=new BaselineGridViewer();}else{document.body.appendChild(document.createElement('script')).src='https://rawgit.com/mzilverberg/Baseline-Grid-Bookmarklet/work-in-progress/bookmarklet.js';}})();">Baseline grid</a>
   <h1>Cras justo odio</h1>
   <?php for($i = 0; $i < 10; $i++) { ?>
     <h2>Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</h2>
